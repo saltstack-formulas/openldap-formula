@@ -4,4 +4,4 @@ openldap
 openldap
 --------
 
-Install ldap clients
+Install and configure ldap client
