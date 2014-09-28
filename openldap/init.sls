@@ -5,7 +5,7 @@ ldap:
     - pkgs:
       - openldap-servers
       - openldap-clients
-    {% elif grains['os_family'] == 'Debian'%}
+    {% elif grains['os_family'] == 'Debian' %}
     - name: ldap-utils
     {% else %}
     - name: openldap
