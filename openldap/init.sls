@@ -9,9 +9,10 @@ ldap:
     - name: ldap-utils
     {% else %}
     - name: openldap
+    {% endif %}
   file:
     - managed
-    {% elif grains['os_family'] == 'Debian' %}
+    {% if grains['os_family'] == 'Debian' %}
     - name: /etc/ldap/ldap.conf
     {% else %}
     - name: /etc/openldap/ldap.conf
