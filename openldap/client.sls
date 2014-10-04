@@ -1,13 +1,11 @@
-ldap:
+ldap-client:
   pkg:
     - installed
     {% if grains['os_family'] == 'RedHat' %}
     - pkgs:
-      - openldap-servers
       - openldap-clients
     {% elif grains['os_family'] == 'Debian' %}
     - pkgs:
-      - slapd
       - ldap-utils
     {% else %}
     - name: openldap
@@ -26,5 +24,5 @@ ldap:
     - mode: 644
     - makedirs: True
     - require:
-      - pkg: ldap
+      - pkg: ldap-client
 
