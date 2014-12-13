@@ -1,6 +1,5 @@
 ldap:
-  pkg:
-    - installed
+  pkg.installed:
     {% if grains['os_family'] == 'RedHat' %}
     - pkgs:
       - openldap-servers
@@ -12,8 +11,7 @@ ldap:
     {% else %}
     - name: openldap
     {% endif %}
-  file:
-    - managed
+  file.managed:
     {% if grains['os_family'] == 'Debian' %}
     - name: /etc/ldap/ldap.conf
     {% else %}
