@@ -1,10 +1,8 @@
 {% from 'openldap/map.jinja' import openldap with context %}
 ldap-server:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ openldap.server_pkg }}
-  file:
-    - managed
+  file.managed:
     - name: {{ openldap.server_config }}
     - source: salt://openldap/files/slapd.conf
     - template: jinja
