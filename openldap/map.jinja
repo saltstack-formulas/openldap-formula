@@ -1,0 +1,25 @@
+{% set openldap = salt['grains.filter_by']({
+    'default': {
+        'client_config': '/etc/ldap.conf',
+        'client_pkg': 'openldap',
+        'server_config': '/etc/openldap/slapd.conf',
+        'su_group': 'root',
+    },
+    'Debian': {
+        'client_config': '/etc/ldap.conf',
+        'client_pkg': 'ldap-utils',
+        'server_config': '/etc/ldap/slapd.conf',
+        'server_pkg': 'slapd',
+        'su_group': 'root',
+    },
+    'FreeBSD': {
+        'client_config': '/usr/local/etc/openldap/ldap.conf',
+        'client_pkg': 'openldap-client',
+        'su_group': 'wheel',
+    },
+    'RedHat': {
+        'client_pkg': 'openldap-clients',
+        'server_pkg': 'openldap-servers',
+        'su_group': 'root',
+    },
+}, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}

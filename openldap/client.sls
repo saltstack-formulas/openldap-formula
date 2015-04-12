@@ -1,26 +1,15 @@
+{% from 'openldap/map.jinja' import openldap with context %}
 ldap-client:
   pkg:
     - installed
-    {% if grains['os_family'] == 'RedHat' %}
-    - pkgs:
-      - openldap-clients
-    {% elif grains['os_family'] == 'Debian' %}
-    - pkgs:
-      - ldap-utils
-    {% else %}
-    - name: openldap
-    {% endif %}
+    - name: {{ openldap.client_pkg }}
   file:
     - managed
-    {% if grains['os_family'] == 'Debian' %}
-    - name: /etc/ldap/ldap.conf
-    {% else %}
-    - name: /etc/openldap/ldap.conf
-    {% endif %}
+    - name: {{ openldap.client_config }}
     - source: salt://openldap/files/ldap.conf
     - template: jinja
     - user: root
-    - group: root
+    - group: {{ openldap.su_group }}
     - mode: 644
     - makedirs: True
     - require:

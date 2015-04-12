@@ -1,22 +1,11 @@
+{% from 'openldap/map.jinja' import openldap with context %}
 ldap-server:
   pkg:
     - installed
-    {% if grains['os_family'] == 'RedHat' %}
-    - pkgs:
-      - openldap-servers
-    {% elif grains['os_family'] == 'Debian' %}
-    - pkgs:
-      - slapd
-    {% else %}
-    - name: openldap
-    {% endif %}
+    - name: {{ openldap.server_pkg }}
   file:
     - managed
-    {% if grains['os_family'] == 'Debian' %}
-    - name: /etc/ldap/slapd.conf
-    {% else %}
-    - name: /etc/openldap/slapd.conf
-    {% endif %}
+    - name: {{ openldap.server_config }}
     - source: salt://openldap/files/slapd.conf
     - template: jinja
     - user: root
