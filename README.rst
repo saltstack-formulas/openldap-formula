@@ -8,7 +8,8 @@ openldap
 
 .. note::
 
-    ``openldap/map.jinja`` is missing serveral values for os_family=RedHat.
+    ``openldap/map.jinja`` is missing serveral values for ``os_family=RedHat``.
+    Pull requests with defaults for RHEL/CentOS/Fedora are welcome.
 
 openldap.client
 ---------------
@@ -20,10 +21,6 @@ minimal configuration.
 
 openldap.server
 ---------------
-
-.. note::
-    
-    This state is incomplete and probably broken.
 
 Install and configure OpenLDAP-server ``slapd``.
 
