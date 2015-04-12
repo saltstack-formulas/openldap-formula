@@ -1,0 +1,5 @@
+openldap:
+    rootdn: 'cn=root,dc=example,dc=com'
+    rootpw: '{SSHA}5++yqs7UNz22kAYf7jboAmklhavVXahK'
+    base: 'dc=example,dc=com'
+    uri: ldap://ldap.example.com
