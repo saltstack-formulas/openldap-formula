@@ -9,9 +9,11 @@ ldap-server:
     - source: salt://openldap/files/slapd.conf
     - template: jinja
     - user: root
-    - group: root
+    - group: {{ openldap.su_group }}
     - mode: 644
     - makedirs: True
     - require:
       - pkg: ldap-server
-
+  service.running:
+    - name: {{ openldap.service }}
+    - enable: True
