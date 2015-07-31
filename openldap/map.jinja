@@ -1,0 +1,54 @@
+{% set openldap = salt['grains.filter_by']({
+    'default': {
+        'client_config': '/etc/ldap.conf',
+        'client_pkg': 'openldap',
+        'server_config': '/etc/openldap/slapd.conf',
+        'server_pkg': 'openldap',
+        'service': 'slapd',
+        'su_group': 'root',
+    },
+    'Debian': {
+        'client_config': '/etc/ldap.conf',
+        'client_pkg': 'ldap-utils',
+        'server_config': '/etc/ldap/slapd.conf',
+        'server_pkg': 'slapd',
+        'service': 'slapd',
+        'slapd_includes': [
+            '/etc/ldap/schema/core.schema',
+            '/etc/ldap/schema/cosine.schema',
+            '/etc/ldap/schema/nis.schema',
+            '/etc/ldap/schema/inetorgperson.schema',
+        ],
+        'slapd_argsfile': '/var/run/slapd/slapd.args',
+        'slapd_directory': '/var/lib/ldap',
+        'slapd_modulepath': '/usr/lib/ldap',
+        'slapd_modules': [
+            'back_hdb',
+            ],
+        'slapd_pidfile': '/var/run/slapd/slapd.pid',
+        'su_group': 'root',
+    },
+    'FreeBSD': {
+        'client_config': '/usr/local/etc/openldap/ldap.conf',
+        'client_pkg': 'openldap-client',
+        'server_config': '/usr/local/etc/openldap/slapd.conf',
+        'server_pkg': 'openldap-server',
+        'service': 'slapd',
+        'slapd_includes': [
+            '/usr/local/etc/openldap/schema/core.schema',
+        ],
+        'slapd_argsfile': '/var/run/openldap/slapd.args',
+        'slapd_directory': '/var/db/openldap-data',
+        'slapd_modulepath': '/usr/local/libexec/openldap',
+        'slapd_modules': [
+            'back_mdb',
+            ],
+        'slapd_pidfile': '/var/run/openldap/slapd.pid',
+        'su_group': 'wheel',
+    },
+    'RedHat': {
+        'client_pkg': 'openldap-clients',
+        'server_pkg': 'openldap-servers',
+        'su_group': 'root',
+    },
+}, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}
