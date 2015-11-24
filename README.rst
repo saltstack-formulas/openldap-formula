@@ -6,11 +6,6 @@ openldap
     See the full `Salt Formulas installation and usage instructions
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
 
-.. note::
-
-    ``openldap/map.jinja`` is missing serveral values for ``os_family=RedHat``.
-    Pull requests with defaults for RHEL/CentOS/Fedora are welcome.
-
 openldap.client
 ---------------
 

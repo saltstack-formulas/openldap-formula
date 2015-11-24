@@ -47,8 +47,24 @@
         'su_group': 'wheel',
     },
     'RedHat': {
+        'client_config': '/etc/ldap.conf',
         'client_pkg': 'openldap-clients',
+        'server_config': '/etc/openldap/slapd.conf',
         'server_pkg': 'openldap-servers',
+        'service': 'slapd',
+        'slapd_includes': [
+            '/etc/openldap/schema/core.schema',
+            '/etc/openldap/schema/cosine.schema',
+            '/etc/openldap/schema/nis.schema',
+            '/etc/openldap/schema/inetorgperson.schema',
+        ],
+        'slapd_argsfile': '/var/run/openldap/slapd.args',
+        'slapd_pidfile': '/var/run/openldap/slapd.pid',
+        'slapd_directory': '/var/lib/ldap',
+        'slapd_modulepath': '/usr/lib64/openldap',
+        'slapd_modules': [
+            'back_mdb',
+            ],
         'su_group': 'root',
     },
 }, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}
