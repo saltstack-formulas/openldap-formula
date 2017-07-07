@@ -1,5 +1,9 @@
 {% set openldap = salt['grains.filter_by']({
     'default': {
+        'ng': False,
+        'ldif_configdir': '/etc/openldap/ldif_config',
+        'user': 'ldap',
+        'group': 'ldap',
         'client_config': '/etc/ldap.conf',
         'client_pkg': 'openldap',
         'server_config': '/etc/openldap/slapd.conf',
@@ -8,6 +12,10 @@
         'su_group': 'root',
     },
     'Debian': {
+        'ng': False,
+        'ldif_configdir': '/etc/openldap/ldif_config',
+        'user': 'ldap',
+        'group': 'ldap',
         'client_config': '/etc/ldap.conf',
         'client_pkg': 'ldap-utils',
         'server_config': '/etc/ldap/slapd.conf',
@@ -29,6 +37,10 @@
         'su_group': 'root',
     },
     'FreeBSD': {
+        'ng': False,
+        'ldif_configdir': '/etc/openldap/ldif_config',
+        'user': 'ldap',
+        'group': 'ldap',
         'client_config': '/usr/local/etc/openldap/ldap.conf',
         'client_pkg': 'openldap-client',
         'server_config': '/usr/local/etc/openldap/slapd.conf',
@@ -46,14 +58,17 @@
         'slapd_pidfile': '/var/run/openldap/slapd.pid',
         'su_group': 'wheel',
     },
-    'RedHat': {
+    'RedHat': { 
+        'ng': False,
+        'ldif_configdir': '/etc/openldap/ldif_config',
+        'user': 'ldap',
+        'group': 'ldap',
         'client_config': '/etc/openldap/ldap.conf',
         'client_pkg': 'openldap-clients',
         'server_config': '/etc/openldap/slapd.conf',
         'server_pkg': 'openldap-servers',
         'service': 'slapd',
         'slapd_includes': [
-            '/etc/openldap/schema/core.schema',
             '/etc/openldap/schema/cosine.schema',
             '/etc/openldap/schema/nis.schema',
             '/etc/openldap/schema/inetorgperson.schema',
