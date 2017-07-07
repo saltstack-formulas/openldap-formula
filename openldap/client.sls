@@ -4,7 +4,7 @@ ldap-client:
     - name: {{ openldap.client_pkg }}
   file.managed:
     - name: {{ openldap.client_config }}
-    - source: salt://openldap/files/ldap.conf
+    - source: salt://openldap/templates/ldap.conf.j2
     - template: jinja
     - user: root
     - group: {{ openldap.su_group }}
