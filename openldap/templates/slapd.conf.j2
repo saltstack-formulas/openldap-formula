@@ -58,14 +58,14 @@ moduleload      {{ module }}
 
 database	mdb
 maxsize		1073741824
-{%- set ldap_base = salt['pillar.get']('openldap:base') %}
+{%- set ldap_base = openldap.get('base') %}
 suffix		{{ ldap_base }}
-rootdn		"{{ salt['pillar.get']('openldap:rootdn',
+rootdn		"{{ openldap.get('rootdn',
                     'cn=Manager,' + ldap_base) }}"
 # Cleartext passwords, especially for the rootdn, should
 # be avoid.  See slappasswd(8) and slapd.conf(5) for details.
 # Use of strong authentication encouraged.
-rootpw		{{ salt['pillar.get']('openldap:rootpw',
+rootpw		{{ openldap.get('rootpw',
                 '{SSHA}vQZHnP2w/p2/qGzxoHfaKtW4WdrMNjH6') }}
 # The database directory MUST exist prior to running slapd AND 
 # should only be accessible by the slapd and slap tools.

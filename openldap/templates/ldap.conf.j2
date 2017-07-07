@@ -1,3 +1,4 @@
+{% from 'openldap/map.jinja' import openldap with context %}
 ##############################
 ### SaltStack managed file ###
 ##############################
@@ -7,40 +8,35 @@
 
 # See ldap.conf(5) for details
 # This file should be world readable but not world writable.
-{% if not salt['pillar.get']('openldap:base', False) %}
+{% if not openldap.get('base', False) %}
 #BASE	dc=example,dc=com
 {%- else %}
-BASE    {{ salt['pillar.get']('openldap:base') }}
+BASE    {{ openldap.base }}
 {%- endif %}
-{%- if not salt['pillar.get']('openldap:uri', False) %}
+{%- if not openldap.get('uri', False) %}
 #URI	ldap://ldap.example.com ldap://ldap-master.example.com:666
 {%- else %}
-URI    {{ salt['pillar.get']('openldap:uri') }}
+URI    {{ openldap.uri }}
 {% endif %}
 #SIZELIMIT	12
 #TIMELIMIT	15
 #DEREF		never
-{% if not salt['pillar.get']('openldap:tls_cacertdir', False) %}
+{% if not openldap.get('tls_cacertdir', False) %}
 {#- only needed on Debian? #}
 # TLS certificates (needed for GnuTLS)
-TLS_CACERT   {{ salt['pillar.get']('openldap:tls_cacert',
-                    '/etc/ssl/certs/ca-certificates.crt') }}
+TLS_CACERT   {{ openldap.get('tls_cacert',
+                     '/etc/ssl/certs/ca-certificates.crt') }}
 {%- else %}
 TLS_CACERTDIR /etc/openldap/certs
 {% endif %}
-{%- if salt['pillar.get']('openldap:tls_checkpeer', None) is not none %}
-### Not mentioned in ldap.conf(5)...
-  {%- if salt['pillar.get']('openldap:tls_checkpeer') %}
-TLS_CHECKPEER   on
-  {%- else %}
-TLS_CHECKPEER   off
-  {%- endif %}
+{%- if openldap.get('tls_checkpeer', None) is not none %}
+TLS_CHECKPEER   {{ openldap.get('tls_checkpeer', 'off') }}
 {%- endif %}
-{%- if salt['pillar.get']('openldap:tls_reqcert', False) %}
-  {%- if salt['pillar.get']('openldap:tls_reqcert_force') or
-        salt['pillar.get']('openldap:tls_reqcert') in
+{%- if openldap.get('tls_reqcert', False) %}
+  {%- if openldap.get('tls_reqcert_force') or
+        openldap.get('tls_reqcert') in
         ['never','allow','try','demand','hard'] %}
-TLS_REQCERT {{ salt['pillar.get']('openldap:tls_reqcert') }}
+TLS_REQCERT {{ openldap.get('tls_reqcert') }}
   {%- else %}
 # ! Probably invalid value supplied via pillar[openldap:tls_reqcert]
 #   Set openldap:tls_reqcert_force to True override checks
@@ -49,7 +45,7 @@ TLS_REQCERT {{ salt['pillar.get']('openldap:tls_reqcert') }}
 {%- endif %}
 
 # Turning this off breaks GSSAPI used with krb5 when rdns = false
-{%- if salt['pillar.get']('openldap:sasl_nocanon', True) %}
+{%- if openldap.get('sasl_nocanon', True) %}
 SASL_NOCANON    on
 {%- else %}
 SASL_NOCANON    off
@@ -58,8 +54,7 @@ SASL_NOCANON    off
 ## Set minimal UID to be included in generation
 ## of the nss_initgroups_ignoreusers value by
 ## /usr/sbin/nssldap-update-ignoreusers:
-{%- set min_uid = salt['pillar.get'](
-    'openldap:nss_initgroups_minimum_uid', False) %}
+{%- set min_uid = openldap.get('nss_initgroups_minimum_uid', False) %}
 {#- guess what: "if min_uid is number" 
     evaluates to True with min_uid=False... #}
 {%- if min_uid %}
@@ -70,8 +65,7 @@ nss_initgroups_minimum_uid {{ min_uid }}
 {#- might be useful to emulate the tool's behaviour here so it doesn't change 
     the file every time a local user is added. It's rather simple: List all 
     usernames with UIDs below nss_initgroups_minimum_uid (default: 1000). #}
-{%- set ignore_users = salt['pillar.get'](
-        'openldap:nss_initgroups_ignoreusers', False) %}
+{%- set ignore_users = openldap.get('nss_initgroups_ignoreusers', False) %}
 {%- if not ignore_users %}
 #nss_initgroups_ignoreusers
 {%- else %}
