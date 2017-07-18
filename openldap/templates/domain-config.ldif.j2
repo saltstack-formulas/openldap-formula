@@ -1,0 +1,17 @@
+{% from 'openldap/map.jinja' import openldap with context %}
+dn: {{ openldap.base }}
+objectClass: top
+objectClass: domain
+
+dn: {{ openldap.rootdn }}
+objectClass: organizationalRole
+description: LDAP Manager
+
+dn: ou=People,{{ openldap.base }}
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,{{ openldap.base }}
+objectClass: organizationalUnit
+ou: Group
+
