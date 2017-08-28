@@ -67,4 +67,27 @@
             ],
         'su_group': 'root',
     },
+    'Suse': {
+        'client_config': '/etc/openldap/ldap.conf',
+        'client_pkg': 'openldap2-client',
+        'server_config': '/etc/openldap/slapd.conf',
+        'server_pkg': 'openldap2',
+        'service': 'slapd',
+        'slapd_includes': [
+            '/etc/openldap/schema/core.schema',
+            '/etc/openldap/schema/cosine.schema',
+            '/etc/openldap/schema/inetorgperson.schema',
+            '/etc/openldap/schema/rfc2307bis.schema',
+            '/etc/openldap/schema/yast.schema',
+         ],
+        'slapd_argsfile': '/var/run/openldap/slapd.args',
+        'slapd_pidfile': '/var/run/openldap/slapd.pid',
+        'slapd_directory': '/var/lib/ldap',
+        'slapd_modulepath': '/usr/lib64/openldap',
+        'slapd_modules': [
+            'back_mdb',
+         ],
+        'slapd_pidfile': '/var/run/slapd/slapd.pid',
+        'su_group': 'root',
+    },
 }, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}
