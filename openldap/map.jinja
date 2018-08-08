@@ -91,4 +91,4 @@
         'slapd_pidfile': '/var/run/slapd/slapd.pid',
         'su_group': 'root',
     },
-}, grain='os_family', merge=salt['pillar.get']('openldap')) %}
+}, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}
