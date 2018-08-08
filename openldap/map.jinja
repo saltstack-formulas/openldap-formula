@@ -2,7 +2,7 @@
     'default': {
         'client_config': '/etc/ldap.conf',
         'client_pkg': 'openldap',
-        'server_config': '/etc/openldap/slapd.conf',
+        'server_defaults': '/etc/default/slapd',
         'server_pkg': 'openldap',
         'service': 'slapd',
         'su_group': 'root',
@@ -11,6 +11,7 @@
         'client_config': '/etc/ldap.conf',
         'client_pkg': 'ldap-utils',
         'server_config': '/etc/ldap/slapd.conf',
+        'server_defaults': '/etc/default/slapd',
         'server_pkg': 'slapd',
         'service': 'slapd',
         'slapd_includes': [
