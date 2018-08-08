@@ -5,6 +5,7 @@
         'server_defaults': '/etc/default/slapd',
         'server_pkg': 'openldap',
         'service': 'slapd',
+        'database': 'mdb',
         'su_group': 'root',
     },
     'Debian': {
@@ -13,6 +14,7 @@
         'server_config': '/etc/ldap/slapd.conf',
         'server_defaults': '/etc/default/slapd',
         'server_pkg': 'slapd',
+        'database': 'mdb',
         'service': 'slapd',
         'slapd_includes': [
             '/etc/ldap/schema/core.schema',
