@@ -1,17 +1,31 @@
 {% from 'openldap/map.jinja' import openldap with context %}
-ldap-server:
-  pkg.installed:
-    - name: {{ openldap.server_pkg }}
+
+{{ openldap.server_pkg }}:
+  pkg.installed
+
+{{ openldap.server_config }}:
   file.managed:
-    - name: {{ openldap.server_config }}
-    - source: salt://openldap/files/slapd.conf
+   - source: salt://openldap/files/slapd.conf
+   - template: jinja
+   - user: root
+   - group: {{ openldap.su_group }}
+   - mode: 644
+   - makedirs: True
+   - require:
+     - pkg: {{ openldap.server_pkg }}
+
+{{ openldap.server_defaults }}:
+  file.managed:
+    - source: salt://openldap/files/slapd.default.jinja
     - template: jinja
     - user: root
     - group: {{ openldap.su_group }}
     - mode: 644
     - makedirs: True
     - require:
-      - pkg: ldap-server
+      - pkg: {{ openldap.server_pkg }}
+
+slapd_service:
   service.running:
     - name: {{ openldap.service }}
     - enable: True

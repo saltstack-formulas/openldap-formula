@@ -11,6 +11,7 @@
         'client_config': '/etc/ldap.conf',
         'client_pkg': 'ldap-utils',
         'server_config': '/etc/ldap/slapd.conf',
+        'server_defaults': '/etc/default/slapd',
         'server_pkg': 'slapd',
         'service': 'slapd',
         'slapd_includes': [
@@ -90,4 +91,4 @@
         'slapd_pidfile': '/var/run/slapd/slapd.pid',
         'su_group': 'root',
     },
-}, grain='os_family', merge=salt['pillar.get']('openldap:lookup')) %}
+}, grain='os_family', merge=salt['pillar.get']('openldap')) %}
