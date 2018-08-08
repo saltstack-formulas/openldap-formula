@@ -29,3 +29,18 @@ slapd_service:
   service.running:
     - name: {{ openldap.service }}
     - enable: True
+
+/etc/ldap/include:
+  file.directory:
+    - user: root
+    - group: {{ openldap.su_group }}
+    - clean: True
+{% for file in salt['pillar.get']('openldap:includes',{}).keys() %}
+    - exclude_pat: '{{file}}'
+
+/etc/ldap/include/{{file}}:
+  file.managed:
+    - contents_pillar: openldap:includes:{{file}}
+    - require:
+      - file: /etc/ldap/include
+{% endfor %}
