@@ -13,3 +13,8 @@ openldap:
         content
         of
         my_include_file
+    database_config:
+      maxsize: 1073741824
+      checkpoint: '512 30'
+    overlay:
+      - memberof
