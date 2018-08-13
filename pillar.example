@@ -13,3 +13,16 @@ openldap:
         content
         of
         my_include_file
+    database_config:
+      maxsize: 1073741824
+      checkpoint: '512 30'
+    overlay:
+      - memberof
+    tls:
+      ca_cert:
+        file: '/etc/ldap/ssl/ca.cert'
+      cert:
+        file: '/etc/ldap/ssl/ldap.cert'
+      key:
+        file: '/etc/ldap/ssl/ldap.key'
+      cipher_suite: 'HIGH:MEDIUM:-SSLv2'

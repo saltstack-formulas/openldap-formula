@@ -35,12 +35,19 @@ slapd_service:
     - user: root
     - group: {{ openldap.su_group }}
     - clean: True
-{% for file in salt['pillar.get']('openldap:includes',{}).keys() %}
-    - exclude_pat: '{{file}}'
 
+{%- for file in salt['pillar.get']('openldap:includes',{}).keys() %}
 /etc/ldap/include/{{file}}:
   file.managed:
     - contents_pillar: openldap:includes:{{file}}
-    - require:
+    - require_in:
       - file: /etc/ldap/include
-{% endfor %}
+{%- endfor %}
+
+{%- if salt['pillar.get']('openldap:tls', False) %}
+{%- set tls_directory = salt ['pillar.get']('openldap:tls:directory', '/etc/ldap/ssl') %}
+{{tls_directory}}:
+  file.directory:
+    - user: root
+    - group: {{ openldap.su_group }}
+{%- endif %}
