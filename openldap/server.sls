@@ -43,3 +43,11 @@ slapd_service:
     - require_in:
       - file: /etc/ldap/include
 {%- endfor %}
+
+{%- if salt['pillar.get']('openldap:tls', False) %}
+{%- set tls_directory = salt ['pillar.get']('openldap:tls:directory', '/etc/ldap/ssl') %}
+{{tls_directory}}:
+  file.directory:
+    - user: root
+    - group: {{ openldap.su_group }}
+{%- endif %}
