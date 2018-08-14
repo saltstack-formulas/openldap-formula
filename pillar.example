@@ -13,3 +13,34 @@ openldap:
         content
         of
         my_include_file
+    database_config:
+      maxsize: 1073741824
+      checkpoint: '512 30'
+    overlay:
+      - memberof
+    tls:
+      ca_cert:
+        file: '/etc/ldap/ssl/ca.cert'
+      cert:
+        file: '/etc/ldap/ssl/ldap.cert'
+      key:
+        file: '/etc/ldap/ssl/ldap.key'
+      cipher_suite: 'HIGH:MEDIUM:-SSLv2'
+      syncrepl:
+        role: consumer
+        rid: 100
+        config:
+          provider:
+            syncprov-checkpoint: '100 10'
+            syncprov-sessionlog: 100
+          consumer:
+            provider: 'ldap://ldap-master.example.com:389'
+            type: 'refreshAndPersist'
+            retry: '"500 +"'
+            filter: '"(objectClass=*)"'
+            searchbase: '"dc=example,dc=com"'
+            scope: 'sub'
+            schemachecking: 'off'
+            bindmethod: 'simple'
+            binddn: '"cn=replicator,dc=example,dc=com"'
+            credentials: 'secret'
