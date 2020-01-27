@@ -14,6 +14,7 @@
    - require:
      - pkg: {{ openldap.server_pkg }}
 
+{% if 'server_defaults' in openldap %}
 {{ openldap.server_defaults }}:
   file.managed:
     - source: salt://openldap/files/slapd.default.jinja
@@ -24,6 +25,7 @@
     - makedirs: True
     - require:
       - pkg: {{ openldap.server_pkg }}
+{% endif %}
 
 slapd_service:
   service.running:
