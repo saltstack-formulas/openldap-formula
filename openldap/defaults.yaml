@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+openldap:
+  client_config: /etc/ldap.conf
+  client_pkg: openldap
+  server_defaults: /etc/default/slapd
+  server_pkg: openldap
+  service: slapd
+  database: mdb
+  su_group: root
+  index: objectClass

@@ -5,14 +5,16 @@
 
 {{ openldap.server_config }}:
   file.managed:
-   - source: salt://openldap/files/slapd.conf
-   - template: jinja
-   - user: root
-   - group: {{ openldap.su_group }}
-   - mode: 644
-   - makedirs: True
-   - require:
-     - pkg: {{ openldap.server_pkg }}
+    - source: salt://openldap/files/slapd.conf
+    - template: jinja
+    - user: root
+    - group: {{ openldap.su_group }}
+    - mode: 644
+    - makedirs: True
+    - require:
+      - pkg: {{ openldap.server_pkg }}
+    - context:
+        openldap: {{ openldap | json }}
 
 {{ openldap.server_defaults }}:
   file.managed:

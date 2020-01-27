@@ -1,0 +1,101 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os_family'] based logic.
+# You just need to add the key:values for an `os_family` that differ
+# from `defaults.yaml` + `osarch.yaml`.
+# Only add an `os_family` which is/will be supported by the formula.
+#
+# If you do not need to provide defaults via the `os_family` grain,
+# you will need to provide at least an empty dict in this file, e.g.
+# osfamilymap: {}
+---
+Debian:
+  client_config: /etc/ldap.conf
+  client_pkg: ldap-utils
+  server_config: /etc/ldap/slapd.conf
+  server_defaults: /etc/default/slapd
+  server_pkg: slapd
+  database: mdb
+  service: slapd
+  slapd_includes:
+    - /etc/ldap/schema/core.schema
+    - /etc/ldap/schema/cosine.schema
+    - /etc/ldap/schema/nis.schema
+    - /etc/ldap/schema/inetorgperson.schema
+  slapd_argsfile: /var/run/slapd/slapd.args
+  slapd_directory: /var/lib/ldap
+  slapd_modulepath: /usr/lib/ldap
+  slapd_modules:
+    - back_hdb
+  slapd_pidfile: /var/run/slapd/slapd.pid
+  su_group: root
+
+RedHat:
+  client_config: /etc/openldap/ldap.conf
+  client_pkg: openldap-clients
+  server_config: /etc/openldap/slapd.conf
+  server_pkg: openldap-servers
+  service: slapd
+  slapd_includes:
+    - /etc/openldap/schema/core.schema
+    - /etc/openldap/schema/cosine.schema
+    - /etc/openldap/schema/nis.schema
+    - /etc/openldap/schema/inetorgperson.schema
+  slapd_argsfile: /var/run/openldap/slapd.args
+  slapd_pidfile: /var/run/openldap/slapd.pid
+  slapd_directory: /var/lib/ldap
+  slapd_modulepath: /usr/lib64/openldap
+  slapd_modules:
+    - back_mdb
+  su_group: root
+
+Suse:
+  client_config: /etc/openldap/ldap.conf
+  client_pkg: openldap2-client
+  server_config: /etc/openldap/slapd.conf
+  server_pkg: openldap2
+  service: slapd
+  slapd_includes:
+    - /etc/openldap/schema/core.schema
+    - /etc/openldap/schema/cosine.schema
+    - /etc/openldap/schema/inetorgperson.schema
+    - /etc/openldap/schema/rfc2307bis.schema
+    - /etc/openldap/schema/yast.schema
+  slapd_argsfile: /var/run/slapd/slapd.args
+  slapd_pidfile: /var/run/slapd/slapd.pid
+  slapd_directory: /var/lib/ldap
+  slapd_modulepath: /usr/lib64/openldap
+  slapd_modules:
+    - back_mdb
+  su_group: root
+
+Gentoo: {}
+
+Arch: {}
+
+Alpine: {}
+
+FreeBSD:
+  client_config: /usr/local/etc/openldap/ldap.conf
+  client_pkg: openldap-client
+  server_config: /usr/local/etc/openldap/slapd.conf
+  server_pkg: openldap-server
+  service: slapd
+  slapd_includes:
+    - /usr/local/etc/openldap/schema/core.schema
+  slapd_argsfile: /var/run/openldap/slapd.args
+  slapd_directory: /var/db/openldap-data
+  slapd_modulepath: /usr/local/libexec/openldap
+  slapd_modules:
+    - back_mdb
+  slapd_pidfile: /var/run/openldap/slapd.pid
+  su_group: wheel
+
+OpenBSD: {}
+
+Solaris: {}
+
+Windows: {}
+
+MacOS: {}
