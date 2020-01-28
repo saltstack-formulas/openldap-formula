@@ -35,6 +35,7 @@ slapd_service:
     - user: root
     - group: {{ openldap.su_group }}
     - clean: True
+    - makedirs: True
 {% for file in salt['pillar.get']('openldap:includes',{}).keys() %}
     - exclude_pat: '{{file}}'
 
