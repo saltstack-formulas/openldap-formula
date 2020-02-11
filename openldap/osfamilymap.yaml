@@ -16,7 +16,6 @@ Debian:
   server_config: /etc/ldap/slapd.conf
   server_defaults: /etc/default/slapd
   server_pkg: slapd
-  database: mdb
   service: slapd
   slapd_includes:
     - /etc/ldap/schema/core.schema
@@ -46,8 +45,6 @@ RedHat:
   slapd_pidfile: /var/run/openldap/slapd.pid
   slapd_directory: /var/lib/ldap
   slapd_modulepath: /usr/lib64/openldap
-  slapd_modules:
-    - back_mdb
   su_group: root
 
 Suse:
@@ -66,8 +63,6 @@ Suse:
   slapd_pidfile: /var/run/slapd/slapd.pid
   slapd_directory: /var/lib/ldap
   slapd_modulepath: /usr/lib64/openldap
-  slapd_modules:
-    - back_mdb
   su_group: root
 
 Gentoo: {}
@@ -87,8 +82,6 @@ FreeBSD:
   slapd_argsfile: /var/run/openldap/slapd.args
   slapd_directory: /var/db/openldap-data
   slapd_modulepath: /usr/local/libexec/openldap
-  slapd_modules:
-    - back_mdb
   slapd_pidfile: /var/run/openldap/slapd.pid
   su_group: wheel
 
