@@ -9,11 +9,11 @@ SLAPD_CONF="{{ salt['pillar.get']('openldap:slapd_conf','') }}"
 
 # System account to run the slapd server under. If empty the server
 # will run as root.
-SLAPD_USER="{{ salt['pillar.get']('openldap:user','openldap') }}"
+SLAPD_USER="{{ openldap.user }}"
 
 # System group to run the slapd server under. If empty the server will
 # run in the primary group of its user.
-SLAPD_GROUP="{{ salt['pillar.get']('openldap:group','openldap') }}"
+SLAPD_GROUP="{{ openldap.group }}"
 
 # Path to the pid file of the slapd server. If not set the init.d script
 # will try to figure it out from $SLAPD_CONF (/etc/ldap/slapd.conf by
