@@ -36,6 +36,8 @@ RedHat:
   server_config: /etc/openldap/slapd.conf
   server_pkg: openldap-servers
   service: slapd
+  user: ldap
+  group: ldap
   slapd_includes:
     - /etc/openldap/schema/core.schema
     - /etc/openldap/schema/cosine.schema
@@ -77,6 +79,8 @@ FreeBSD:
   server_config: /usr/local/etc/openldap/slapd.conf
   server_pkg: openldap-server
   service: slapd
+  user: ldap
+  group: ldap
   slapd_includes:
     - /usr/local/etc/openldap/schema/core.schema
   slapd_argsfile: /var/run/openldap/slapd.args

@@ -7,8 +7,8 @@
   file.managed:
     - source: salt://openldap/files/slapd.conf
     - template: jinja
-    - user: root
-    - group: {{ openldap.su_group }}
+    - user: {{ openldap.user }}
+    - group: {{ openldap.group }}
     - mode: 644
     - makedirs: True
     - require:
@@ -26,6 +26,8 @@
     - makedirs: True
     - require:
       - pkg: {{ openldap.server_pkg }}
+    - context:
+        openldap: {{ openldap | json }}
 
 slapd_service:
   service.running:
@@ -34,7 +36,7 @@ slapd_service:
 
 /etc/ldap/include:
   file.directory:
-    - user: root
+    - user: {{ openldap.user }}
     - group: {{ openldap.su_group }}
     - clean: True
     - makedirs: True
