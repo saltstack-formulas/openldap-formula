@@ -16,8 +16,9 @@
     - context:
         openldap: {{ openldap | json }}
 
-{{ openldap.server_defaults }}:
+slapd_conf:
   file.managed:
+    - name: {{ openldap.server_defaults }}
     - source: salt://openldap/files/slapd.default.jinja
     - template: jinja
     - user: root
@@ -33,6 +34,8 @@ slapd_service:
   service.running:
     - name: {{ openldap.service }}
     - enable: True
+    - watch:
+      - file: slapd_conf
 
 /etc/ldap/include:
   file.directory:
@@ -48,4 +51,6 @@ slapd_service:
     - contents_pillar: openldap:includes:{{file}}
     - require:
       - file: /etc/ldap/include
+    - watch_in:
+        - service: slapd_service
 {% endfor %}
