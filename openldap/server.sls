@@ -44,11 +44,11 @@ slapd_service:
     - clean: True
     - makedirs: True
 {% for file in salt['pillar.get']('openldap:includes',{}).keys() %}
-    - exclude_pat: '{{file}}'
+    - exclude_pat: '{{ file }}'
 
-/etc/ldap/include/{{file}}:
+/etc/ldap/include/{{ file }}:
   file.managed:
-    - contents_pillar: openldap:includes:{{file}}
+    - contents_pillar: openldap:includes:{{ file }}
     - require:
       - file: /etc/ldap/include
     - watch_in:
