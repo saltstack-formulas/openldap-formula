@@ -2,13 +2,14 @@
 # vim: ft=yaml
 ---
 openldap:
-  client_config: /etc/ldap.conf
+  client_config: /etc/openldap/ldap.conf
   client_pkg: openldap
   server_defaults: /etc/default/slapd
+  server_config: /etc/openldap/slapd.conf
   server_pkg: openldap
   service: slapd
-  user: openldap
-  group: openldap
+  user: ldap
+  group: ldap
   database: mdb
   su_group: root
   index: objectClass
