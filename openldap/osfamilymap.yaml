@@ -14,9 +14,9 @@ Debian:
   client_config: /etc/ldap.conf
   client_pkg: ldap-utils
   server_config: /etc/ldap/slapd.conf
-  server_defaults: /etc/default/slapd
   server_pkg: slapd
-  service: slapd
+  user: openldap
+  group: openldap
   slapd_includes:
     - /etc/ldap/schema/core.schema
     - /etc/ldap/schema/cosine.schema
@@ -28,16 +28,10 @@ Debian:
   slapd_modules:
     - back_hdb
   slapd_pidfile: /var/run/slapd/slapd.pid
-  su_group: root
 
 RedHat:
-  client_config: /etc/openldap/ldap.conf
   client_pkg: openldap-clients
-  server_config: /etc/openldap/slapd.conf
   server_pkg: openldap-servers
-  service: slapd
-  user: ldap
-  group: ldap
   slapd_includes:
     - /etc/openldap/schema/core.schema
     - /etc/openldap/schema/cosine.schema
@@ -47,14 +41,10 @@ RedHat:
   slapd_pidfile: /var/run/openldap/slapd.pid
   slapd_directory: /var/lib/ldap
   slapd_modulepath: /usr/lib64/openldap
-  su_group: root
 
 Suse:
-  client_config: /etc/openldap/ldap.conf
   client_pkg: openldap2-client
-  server_config: /etc/openldap/slapd.conf
   server_pkg: openldap2
-  service: slapd
   slapd_includes:
     - /etc/openldap/schema/core.schema
     - /etc/openldap/schema/cosine.schema
@@ -65,7 +55,6 @@ Suse:
   slapd_pidfile: /var/run/slapd/slapd.pid
   slapd_directory: /var/lib/ldap
   slapd_modulepath: /usr/lib64/openldap
-  su_group: root
 
 Gentoo: {}
 
@@ -78,9 +67,6 @@ FreeBSD:
   client_pkg: openldap-client
   server_config: /usr/local/etc/openldap/slapd.conf
   server_pkg: openldap-server
-  service: slapd
-  user: ldap
-  group: ldap
   slapd_includes:
     - /usr/local/etc/openldap/schema/core.schema
   slapd_argsfile: /var/run/openldap/slapd.args

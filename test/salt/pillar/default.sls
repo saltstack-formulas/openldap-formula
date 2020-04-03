@@ -7,12 +7,6 @@ openldap:
   base: 'dc=example,dc=com'
   uri: 'ldap://ldap.example.com'
   slapd_conf: '/etc/ldap/slapd.conf'  # if no dynamic configuration on Debian
-  user: 'openldap'
-  group: 'openldap'
   slapd_services: 'ldap://127.0.0.1:389/ ldaps:/// ldapi:///'
   slapd_options: '-4'  # add other options here if needed
-  includes:
-    my_include_file: |
-      content
-      of
-      my_include_file
+  includes: {}
