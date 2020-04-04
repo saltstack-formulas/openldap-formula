@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+# Common across controls
+su_group =
+  case platform[:family]
+  when 'bsd'
+    'wheel'
+  else
+    'root'
+  end
+
 control 'openldap client configuration' do
   title 'should match desired lines'
 
@@ -16,7 +25,7 @@ control 'openldap client configuration' do
   describe file(client_config) do
     it { should be_file }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
+    it { should be_grouped_into su_group }
     its('mode') { should cmp '0644' }
     its('content') { should include 'BASE    dc=example,dc=com' }
     its('content') { should include 'URI    ldap://ldap.example.com' }
@@ -49,18 +58,10 @@ end
 control 'openldap defaults configuration' do
   title 'should match desired lines'
 
-  grouped =
-    case platform[:family]
-    when 'bsd'
-      'wheel'
-    else
-      'root'
-    end
-
   describe file('/etc/default/slapd') do
     it { should be_file }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into grouped }
+    it { should be_grouped_into su_group }
     its('mode') { should cmp '0644' }
     its('content') do
       should include(
@@ -87,7 +88,7 @@ control 'openldap include configuration' do
   describe file(File.join(slapd_include_dir, 'my_include_file_name')) do
     it { should be_file }
     it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
+    it { should be_grouped_into su_group }
     its('mode') { should cmp '0644' }
     its('content') do
       should include <<~INCLUDE_FILE
