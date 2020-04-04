@@ -10,6 +10,8 @@ openldap:
   service: slapd
   user: ldap
   group: ldap
+  slapd_include_dir: /etc/openldap/include
+  includes: {}
   database: mdb
   su_group: root
   index: objectClass

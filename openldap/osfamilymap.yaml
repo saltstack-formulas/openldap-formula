@@ -17,6 +17,7 @@ Debian:
   server_pkg: slapd
   user: openldap
   group: openldap
+  slapd_include_dir: /etc/ldap/include
   slapd_includes:
     - /etc/ldap/schema/core.schema
     - /etc/ldap/schema/cosine.schema
@@ -67,6 +68,7 @@ FreeBSD:
   client_pkg: openldap-client
   server_config: /usr/local/etc/openldap/slapd.conf
   server_pkg: openldap-server
+  slapd_include_dir: /usr/local/etc/openldap/include
   slapd_includes:
     - /usr/local/etc/openldap/schema/core.schema
   slapd_argsfile: /var/run/openldap/slapd.args

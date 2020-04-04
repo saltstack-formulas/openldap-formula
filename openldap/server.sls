@@ -37,20 +37,23 @@ slapd_service:
     - watch:
       - file: slapd_conf
 
-/etc/ldap/include:
+slapd_include_dir:
   file.directory:
+    - name: {{ openldap.slapd_include_dir }}
     - user: {{ openldap.user }}
-    - group: {{ openldap.su_group }}
+    - group: {{ openldap.group }}
     - clean: True
     - makedirs: True
-{% for file in salt['pillar.get']('openldap:includes',{}).keys() %}
-    - exclude_pat: '{{ file }}'
+    - exclude_pat: "E@({{ openldap.includes.keys() | join ('|') }})"
 
-/etc/ldap/include/{{ file }}:
+{% for file in openldap.includes.keys() %}
+slapd_include_{{ file }}:
   file.managed:
-    - contents_pillar: openldap:includes:{{ file }}
+    - name: {{ openldap.slapd_include_dir ~ '/' ~ file }}
+    - contents: |
+        {{ openldap.includes[file] | indent(8, false) }}
     - require:
-      - file: /etc/ldap/include
+      - file: slapd_include_dir
     - watch_in:
         - service: slapd_service
 {% endfor %}
