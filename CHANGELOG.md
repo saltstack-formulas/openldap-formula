@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.0...v0.6.1) (2020-04-04)
+
+
+### Bug Fixes
+
+* **include-ex-pat:** do work`exclude_pat` and slapd_inc dir refactor ([4f28537](https://github.com/saltstack-formulas/openldap-formula/commit/4f285378a74ea1745b0f26bc66dc350de81f4a57))
+
 # [0.6.0](https://github.com/saltstack-formulas/openldap-formula/compare/v0.5.4...v0.6.0) (2020-04-03)
 
 
