@@ -1,5 +1,17 @@
 # Changelog
 
+# [0.7.0](https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.2...v0.7.0) (2020-04-05)
+
+
+### Features
+
+* **indexes:** add indexes management in slapd.conf ([afee20b](https://github.com/saltstack-formulas/openldap-formula/commit/afee20b4146daeb9bb5b8bc05ce56f69436526c3))
+
+
+### Tests
+
+* **config_spec:** add test for indexes management in `slapd.conf` ([0813e52](https://github.com/saltstack-formulas/openldap-formula/commit/0813e52a213079caab021f81bec844db42500faf))
+
 ## [0.6.2](https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.1...v0.6.2) (2020-04-05)
 
 

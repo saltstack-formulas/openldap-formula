@@ -13,11 +13,11 @@ This list is sorted by the number of commits per contributor in *descending* ord
    * - Avatar
      - Contributor
      - Contributions
-   * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars3.githubusercontent.com/u/6215293?v=4' width='36' height='36' alt='@0xf10e'>`
-     - `@0xf10e <https://github.com/0xf10e>`_
-     - 15
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars2.githubusercontent.com/u/10231489?v=4' width='36' height='36' alt='@myii'>`
      - `@myii <https://github.com/myii>`_
+     - 17
+   * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars3.githubusercontent.com/u/6215293?v=4' width='36' height='36' alt='@0xf10e'>`
+     - `@0xf10e <https://github.com/0xf10e>`_
      - 15
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars0.githubusercontent.com/u/3374962?v=4' width='36' height='36' alt='@nmadhok'>`
      - `@nmadhok <https://github.com/nmadhok>`_
@@ -30,7 +30,7 @@ This list is sorted by the number of commits per contributor in *descending* ord
      - 5
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars0.githubusercontent.com/u/46799934?v=4' width='36' height='36' alt='@sticky-note'>`
      - `@sticky-note <https://github.com/sticky-note>`_
-     - 4
+     - 5
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars0.githubusercontent.com/u/6121579?v=4' width='36' height='36' alt='@mhdali'>`
      - `@mhdali <https://github.com/mhdali>`_
      - 2
