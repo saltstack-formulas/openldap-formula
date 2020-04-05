@@ -52,6 +52,8 @@ control 'openldap server configuration' do
     its('mode') { should cmp '0644' }
     its('content') { should include 'rootdn		"cn=root,dc=example,dc=com"' }
     its('content') { should include 'rootpw		{SSHA}5++yqs7UNz22kAYf7jboAmklhavVXahK' }
+    its('content') { should include 'index objectClass eq' }
+    its('content') { should include 'index uid,cn eq,sub' }
   end
 end
 
