@@ -2,6 +2,16 @@
 Changelog
 =========
 
+`0.6.2 <https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.1...v0.6.2>`_ (2020-04-05)
+----------------------------------------------------------------------------------------------------------
+
+Tests
+^^^^^
+
+
+* **config_spec:** add InSpec control to test include file (\ `bb36517 <https://github.com/saltstack-formulas/openldap-formula/commit/bb36517f5f541a38b7e313270662ce360a624670>`_\ )
+* **config_spec:** fix tests related to ``root``\ /\ ``wheel`` group (\ `4427c98 <https://github.com/saltstack-formulas/openldap-formula/commit/4427c98f4968df76cd53a245110f9cc4f6d562b3>`_\ )
+
 `0.6.1 <https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.0...v0.6.1>`_ (2020-04-04)
 ----------------------------------------------------------------------------------------------------------
 
