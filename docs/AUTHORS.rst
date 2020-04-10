@@ -40,6 +40,9 @@ This list is sorted by the number of commits per contributor in *descending* ord
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars3.githubusercontent.com/u/48949?v=4' width='36' height='36' alt='@tampakrap'>`
      - `@tampakrap <https://github.com/tampakrap>`_
      - 2
+   * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars0.githubusercontent.com/u/966102?v=4' width='36' height='36' alt='@dmeulen'>`
+     - `@dmeulen <https://github.com/dmeulen>`_
+     - 1
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars2.githubusercontent.com/u/1396878?v=4' width='36' height='36' alt='@gravyboat'>`
      - `@gravyboat <https://github.com/gravyboat>`_
      - 1

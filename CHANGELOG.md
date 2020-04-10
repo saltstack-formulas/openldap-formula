@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/saltstack-formulas/openldap-formula/compare/v0.7.1...v0.7.2) (2020-04-10)
+
+
+### Tests
+
+* **config_spec:** test bug fixed by [#33](https://github.com/saltstack-formulas/openldap-formula/issues/33) ([50de5b9](https://github.com/saltstack-formulas/openldap-formula/commit/50de5b91dca94bc2d665e4eb6467bb3fbdf2e1b4))
+
 ## [0.7.1](https://github.com/saltstack-formulas/openldap-formula/compare/v0.7.0...v0.7.1) (2020-04-10)
 
 

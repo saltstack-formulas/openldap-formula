@@ -1,7 +1,7 @@
 name: openldap
 os: Debian, Ubuntu, Raspbian, RedHat, Fedora, CentOS, Suse, openSUSE, FreeBSD, OpenBSD
 os_family: Debian, RedHat, Suse, FreeBSD, OpenBSD
-version: 0.7.1
+version: 0.7.2
 release: 1
 minimum_version: 2017.7
 summary: openldap formula
