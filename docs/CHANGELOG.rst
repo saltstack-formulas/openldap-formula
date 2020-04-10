@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.7.1 <https://github.com/saltstack-formulas/openldap-formula/compare/v0.7.0...v0.7.1>`_ (2020-04-10)
+----------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **slapd.conf:** fix additional module loading (\ `86e1b2b <https://github.com/saltstack-formulas/openldap-formula/commit/86e1b2b55e3280c5ea4c1334be0d3e599166e7dd>`_\ )
+
 `0.7.0 <https://github.com/saltstack-formulas/openldap-formula/compare/v0.6.2...v0.7.0>`_ (2020-04-05)
 ----------------------------------------------------------------------------------------------------------
 
