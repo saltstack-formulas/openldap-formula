@@ -29,6 +29,10 @@ Debian:
   slapd_modules:
     - back_hdb
   slapd_pidfile: /var/run/slapd/slapd.pid
+  slapd_tls:
+    ca: /etc/ldap/ssl/cacrt.pem
+    crt: /etc/ldap/ssl/crt.pem
+    key: /etc/ldap/ssl/key.pem
 
 RedHat:
   client_pkg: openldap-clients
@@ -76,6 +80,10 @@ FreeBSD:
   slapd_modulepath: /usr/local/libexec/openldap
   slapd_pidfile: /var/run/openldap/slapd.pid
   su_group: wheel
+  slapd_tls:
+    ca: /usr/local/etc/ssl/cacrt.pem
+    crt: /usr/local/etc/ssl/crt.pem
+    key: /usr/local/etc/ssl/key.pem
 
 OpenBSD: {}
 
