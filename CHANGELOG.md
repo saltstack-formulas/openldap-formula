@@ -1,5 +1,28 @@
 # Changelog
 
+# [0.8.0](https://github.com/saltstack-formulas/openldap-formula/compare/v0.7.2...v0.8.0) (2020-12-16)
+
+
+### Continuous Integration
+
+* **gemfile.lock:** add to repo with updated `Gemfile` [skip ci] ([c6140e2](https://github.com/saltstack-formulas/openldap-formula/commit/c6140e220c521db29ed5447a50fb2270f5c1719d))
+* **gitlab-ci:** use GitLab CI as Travis CI replacement ([0851056](https://github.com/saltstack-formulas/openldap-formula/commit/0851056ebd01de4b8c0f1c49c5ba699929500182))
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([b5ca89a](https://github.com/saltstack-formulas/openldap-formula/commit/b5ca89a759a1d79c3626127ffd130400ca2a32b7))
+* **kitchen+travis:** add new platforms [skip ci] ([b9e383b](https://github.com/saltstack-formulas/openldap-formula/commit/b9e383b2831207e0bae227d432d006e4fd22bad0))
+* **kitchen+travis:** adjust matrix to add `3000.2` & remove `2018.3` [skip ci] ([5248c38](https://github.com/saltstack-formulas/openldap-formula/commit/5248c38cc2955b4d5f208e0316165fedc491bdcb))
+* **kitchen+travis:** adjust matrix to add `3000.3` [skip ci] ([b490acf](https://github.com/saltstack-formulas/openldap-formula/commit/b490acfe9a1d613cc2985f7da4991fc53bc9f31e))
+* **kitchen+travis:** remove `master-py2-arch-base-latest` [skip ci] ([31fd36b](https://github.com/saltstack-formulas/openldap-formula/commit/31fd36b5ee4fafa384eae2cc9aae019e2ae2dab3))
+* **pre-commit:** add to formula [skip ci] ([c52698c](https://github.com/saltstack-formulas/openldap-formula/commit/c52698cf5fa9fab279764e4353324560b3704636))
+* **pre-commit:** enable/disable `rstcheck` as relevant [skip ci] ([9522b01](https://github.com/saltstack-formulas/openldap-formula/commit/9522b0168b5ff8dbfaa4972c8fd74bd7e8bbbc03))
+* **pre-commit:** finalise `rstcheck` configuration [skip ci] ([d8c63a6](https://github.com/saltstack-formulas/openldap-formula/commit/d8c63a654145f6f8e31ac661a23ea2808b8c842a))
+* **travis:** add notifications => zulip [skip ci] ([0fd68c1](https://github.com/saltstack-formulas/openldap-formula/commit/0fd68c1498ce2ad61bdec4b5b37e6fce9ceb9857))
+* **workflows/commitlint:** add to repo [skip ci] ([e86ecaa](https://github.com/saltstack-formulas/openldap-formula/commit/e86ecaa40193b231c99d8c4e90a2ea882d335d19))
+
+
+### Features
+
+* **tls:** manage tls on slapd conf ([1d83044](https://github.com/saltstack-formulas/openldap-formula/commit/1d830448359602600038ec62072d47062908e97f))
+
 ## [0.7.2](https://github.com/saltstack-formulas/openldap-formula/compare/v0.7.1...v0.7.2) (2020-04-10)
 
 
