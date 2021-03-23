@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - openldap._mapdata
             - openldap
       pillars:
         top.sls:
