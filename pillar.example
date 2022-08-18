@@ -21,6 +21,10 @@ openldap:
     cipher_suite: DEFAULT
   indexes:
     objectClass: eq
+  overlays:
+    refint: |-
+      refint_attributes member
+    memberof: ''
   includes:
     my_include_file_name: |
       # Each user can modify its data

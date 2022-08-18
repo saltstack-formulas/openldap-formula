@@ -16,6 +16,7 @@ openldap:
   su_group: root
   index: objectClass  # Kept here for retrocompatibility
   indexes: {}
+  overlays: {}
   slapd_tls:
     enable: false
     ca: /etc/openldap/ssl/cacrt.pem
